@@ -4,6 +4,7 @@ import(
 	"net/http"
 	"fmt"
 	"log"
+	
 	"github.com/gorilla/mux"
 	
 	"./handler"
@@ -29,7 +30,7 @@ func handleRequests(){
 	//vote api
 	myRouter.HandleFunc("/votes", handler.GetVotes).Methods("GET")
 	myRouter.HandleFunc("/votes", handler.PostVote).Methods("POST")
-	
+
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 }
 
