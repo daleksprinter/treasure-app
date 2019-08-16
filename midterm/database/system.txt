@@ -1,0 +1,6 @@
+user
+candidate
+ranking
+
+
+
