@@ -4,9 +4,10 @@ import(
 	"net/http"
 	"encoding/json"
 	"fmt"
-	
+
 	"../db"
 	"../model"
+	"../session"
 )
 
 type WaitUser struct{
@@ -34,6 +35,7 @@ func Login(w http.ResponseWriter, r *http.Request){
 		return 
 	}
 
+	session.Authenticate(w, r, user)
 	json.NewEncoder(w).Encode(user)
 
 

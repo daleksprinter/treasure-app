@@ -22,18 +22,19 @@ func handleRequests(){
 
 	//user api
 	myRouter.HandleFunc("/users", middleware.AuthenticateUser(handler.GetUsers)).Methods("GET")
-	myRouter.HandleFunc("/users", handler.PostUser).Methods("POST")
+
 
 	//ranking api
-	myRouter.HandleFunc("/rankings", handler.GetRankings).Methods("GET")
-	myRouter.HandleFunc("/rankings", handler.PostRanking).Methods("POST")
+	myRouter.HandleFunc("/rankings", middleware.AuthenticateUser(handler.GetRankings)).Methods("GET")
+	myRouter.HandleFunc("/rankings", middleware.AuthenticateUser(handler.PostRanking)).Methods("POST")
 
 	//vote api
-	myRouter.HandleFunc("/votes", handler.GetVotes).Methods("GET")
-	myRouter.HandleFunc("/votes", handler.PostVote).Methods("POST")
+	myRouter.HandleFunc("/votes", middleware.AuthenticateUser(handler.GetVotes)).Methods("GET")
+	myRouter.HandleFunc("/votes", middleware.AuthenticateUser(handler.PostVote)).Methods("POST")
 
 	//authentication api
 	myRouter.HandleFunc("/login", handler.Login).Methods("POST")
+	myRouter.HandleFunc("/logout", handler.Logout).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 }
