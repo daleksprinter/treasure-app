@@ -5,6 +5,8 @@ import(
 	"fmt"
 	"log"
 	"github.com/gorilla/mux"
+	
+	"./db"
 )
 
 func index(w http.ResponseWriter, r *http.Request){
@@ -18,5 +20,6 @@ func handleRequests(){
 }
 
 func main(){
+	db.InitDB()
 	handleRequests()
 }
