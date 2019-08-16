@@ -1,6 +1,6 @@
 
 -- +migrate Up
-CREATE TABLE vote 
+CREATE TABLE votes 
   ( 
      id         INT NOT NULL auto_increment, 
      user       INT NOT NULL, 
@@ -9,8 +9,8 @@ CREATE TABLE vote
      comment    TEXT, 
      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
      PRIMARY KEY(id), 
-     FOREIGN KEY (user) REFERENCES user(id), 
-     FOREIGN KEY (candidate) REFERENCES user(id), 
-     FOREIGN KEY (ranking) REFERENCES ranking(id) 
+     FOREIGN KEY (user) REFERENCES users(id), 
+     FOREIGN KEY (candidate) REFERENCES users(id), 
+     FOREIGN KEY (ranking) REFERENCES rankings(id) 
   ); 
 -- +migrate Down

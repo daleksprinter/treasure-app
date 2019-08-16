@@ -1,8 +1,8 @@
 
 -- +migrate Up
-insert into ranking(name) values('面白い人');
-insert into ranking(name) values('プロ');
-insert into ranking(name) values('やさしい');
+insert into rankings(name, created_user) values('面白い人', 1);
+insert into rankings(name, created_user) values('プロ', 1);
+insert into rankings(name, created_user) values('やさしい', 1);
 
 
 -- +migrate Down

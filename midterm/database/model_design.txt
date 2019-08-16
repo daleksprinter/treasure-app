@@ -1,23 +1,24 @@
-- entitty -
--user
-    -name
-    -userid(githubname)
+- entity -
+-users
+    -name   string  not null
+    -position   string  not null
+    -userid(githubname) string  not null
+    -password string not null
+    -is_candidate bool not null
 
--candidate
-    -name
-    -user(reference user)
 
--ranking
-    -name
+-rankings
+    -name   string  not null
+    -created_user   int (reference user)  not null
     
 
--event-
+- event -
 -voting
-    -user(reference user)
-    -canditate(reference candidate)
-    -ranking(reference ranking)
-    -comment
-    -created_at
+    -user   int (reference users)   not null
+    -canditate  int (reference users) not null
+    -ranking    int (reference rankings) not null
+    -comment    text
+    -created_at date    not null
     unique(user, ranking)
 
 
