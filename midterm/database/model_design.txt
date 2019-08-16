@@ -5,6 +5,8 @@
 
 -candidate
     -name
+    -userid(githubname)
+    -user(reference user)
 
 -ranking
     -name
@@ -12,11 +14,12 @@
 
 -event-
 -voting
-    -user
-    -canditate
-    -ranking
+    -user(reference user)
+    -canditate(reference candidate)
+    -ranking(reference ranking)
     -comment
     -created_at
+    unique(user, ranking)
 
 
 
