@@ -19,6 +19,14 @@ func IsAuthenticated(r *http.Request) bool {
 
 }
 
+func GetRequestedUser(r *http.Request) int {
+	sess, _ := store.Get(r, sess_name)
+
+	user_id, _ := sess.Values["user"].(int)
+	return user_id
+}
+
+
 func Authenticate(w http.ResponseWriter, r *http.Request, user model.User) error {
 	sess, err := store.Get(r, sess_name)
 	if err != nil {

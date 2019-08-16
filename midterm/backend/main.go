@@ -27,6 +27,7 @@ func handleRequests(){
 	//ranking api
 	myRouter.HandleFunc("/rankings", middleware.AuthenticateUser(handler.GetRankings)).Methods("GET")
 	myRouter.HandleFunc("/rankings", middleware.AuthenticateUser(handler.PostRanking)).Methods("POST")
+	myRouter.HandleFunc("/rankings/{id}", middleware.AuthenticateUser(handler.DeleteRanking)).Methods("DELETE")
 
 	//vote api
 	myRouter.HandleFunc("/votes", middleware.AuthenticateUser(handler.GetVotes)).Methods("GET")

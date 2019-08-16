@@ -4,9 +4,12 @@ import(
 	"net/http"
 	"encoding/json"
 	"fmt"
+
+	"github.com/gorilla/mux"
 	
 	"../model"
 	"../db"
+	"../session"
 )
 
 func GetRankings(w http.ResponseWriter, r *http.Request){
@@ -23,8 +26,30 @@ func PostRanking(w http.ResponseWriter, r *http.Request){
 
 	//authorize user
 	ranking.CreatedUser = 1
-	fmt.Println(ranking)
 
 	DB.Create(&ranking)
 	json.NewEncoder(w).Encode(&ranking)
+}
+
+
+func DeleteRanking(w http.ResponseWriter, r *http.Request){
+	DB := db.GetDB()
+	vars := mux.Vars(r) //パスパラメータ取得
+	id := vars["id"]
+
+	var ranking model.Ranking
+
+	if DB.Where("id = ?", id).First(&ranking).RecordNotFound() {
+		fmt.Fprintf(w, "requested id not found")
+		return 
+	}
+
+	if ranking.CreatedUser != session.GetRequestedUser(r) {
+		fmt.Fprintf(w, "this ranking is not created by requested user")
+		return
+	}
+
+	DB.Delete(&ranking)
+	fmt.Fprintf(w, "delete ranking succeeded")
+
 }
