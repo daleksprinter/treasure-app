@@ -32,6 +32,7 @@ func handleRequests(){
 	//vote api
 	myRouter.HandleFunc("/votes", middleware.AuthenticateUser(handler.GetVotes)).Methods("GET")
 	myRouter.HandleFunc("/votes", middleware.AuthenticateUser(handler.PostVote)).Methods("POST")
+	myRouter.HandleFunc("/votes/{id}", middleware.AuthenticateUser(handler.DeleteVote)).Methods("DELETE")
 
 	//authentication api
 	myRouter.HandleFunc("/login", handler.Login).Methods("POST")
