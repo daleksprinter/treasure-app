@@ -32,6 +32,9 @@ func handleRequests(){
 	myRouter.HandleFunc("/votes", handler.GetVotes).Methods("GET")
 	myRouter.HandleFunc("/votes", handler.PostVote).Methods("POST")
 
+	//authentication api
+	myRouter.HandleFunc("/login", handler.Login).Methods("POST")
+
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 }
 

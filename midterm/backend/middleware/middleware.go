@@ -3,12 +3,19 @@ package middleware
 import(
 	"fmt"
 	"net/http"
+
+	"../session"
 )
 
 func AuthenticateUser(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request){
-		fmt.Fprintf(w, "start")
+
+		//check is_session_servive
+		if !session.IsAuthenticated(r) {
+			fmt.Fprintf(w, "please login")
+			return 
+		}
+		
 		next.ServeHTTP(w, r)
-		fmt.Fprintf(w, "end")
 	}
 }
