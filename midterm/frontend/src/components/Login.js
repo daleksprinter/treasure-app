@@ -10,8 +10,38 @@ class Login extends Component{
             username:"",
             password:""
         }
+        this.changeUserId = this.changeUserId.bind(this)
     }
     
+    changeUserId = (e) => {
+        this.setState({
+            username:e.target.value
+        })
+    }
+
+    changePassword = (e) => {
+        this.setState({
+            password:e.target.value
+        })
+    }
+
+    login = (e) => {
+        const url = "http://localhost:8080/login";
+        const data = {
+            "user_id":this.state.username,
+            "password":this.state.password
+        }
+        const method = "POST"
+        fetch(url, {
+            method:method,
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(data),
+        }).then((res) => {
+            console.log(res)
+        })
+    }
 
     render(){ 
         return(
@@ -21,6 +51,7 @@ class Login extends Component{
                     label="GitHub ID"
                     name="user_id"
                     margin="normal"
+                    onChange = {this.changeUserId}
                 /><br />
                 
                 <TextField
@@ -29,9 +60,10 @@ class Login extends Component{
                     type="password"
                     autoComplete="current-password"
                     margin="normal"
+                    onChange = {this.changePassword}
                 /><br />
                
-               <Button variant="contained" color="primary" >
+               <Button variant="contained" color="primary" onClick = {this.login}>
                     Login
                 </Button>
             </div>
