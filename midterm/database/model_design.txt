@@ -1,0 +1,23 @@
+- entitty -
+-user
+    -name
+    -userid(githubname)
+
+-candidate
+    -name
+
+-ranking
+    -name
+    
+
+-event-
+-voting
+    -user
+    -canditate
+    -ranking
+    -comment
+    -created_at
+
+
+
+
