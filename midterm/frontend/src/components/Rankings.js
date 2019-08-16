@@ -1,5 +1,16 @@
 import React, {Component} from 'react'
 
+const Ranking = (props) => {
+    return (
+        <div>
+            <div>{props.data.id}</div>
+            <div>{props.data.name}</div>
+            <div>{props.data.created_user}</div>
+        </div>
+    )
+}
+
+
 class Rankings extends Component{
 
     constructor(){
@@ -14,7 +25,6 @@ class Rankings extends Component{
         fetch(url)
         .then((res) => {
             res.text().then((data) => {
-                console.log(data)
                 this.setState({
                     rankings: JSON.parse(data)
                 })
@@ -23,11 +33,10 @@ class Rankings extends Component{
     }
 
     render(){
-        
         return(
             <div>
                 {this.state.rankings.map(data => {
-                    return <div>{data.name}</div>;
+                    return <Ranking data = {data} />
                 })}
             </div>
         )
