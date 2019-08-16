@@ -20,13 +20,16 @@ func handleRequests(){
 
 	//user api
 	myRouter.HandleFunc("/users", handler.GetUsers).Methods("GET")
+	myRouter.HandleFunc("/users", handler.PostUser).Methods("POST")
 
 	//ranking api
 	myRouter.HandleFunc("/rankings", handler.GetRankings).Methods("GET")
+	myRouter.HandleFunc("/rankings", handler.PostRanking).Methods("POST")
 
 	//vote api
 	myRouter.HandleFunc("/votes", handler.GetVotes).Methods("GET")
-
+	myRouter.HandleFunc("/votes", handler.PostVote).Methods("POST")
+	
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 }
 
