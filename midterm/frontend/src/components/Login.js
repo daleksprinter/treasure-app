@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import './login.css'
+
 class Login extends Component{
     constructor(){
         super();
@@ -39,13 +41,16 @@ class Login extends Component{
             },
             body: JSON.stringify(data),
         }).then((res) => {
-            console.log(res)
+            res.text().then((data) => {
+                window.location.href = '/'
+                console.log(data)
+            })
         })
     }
 
     render(){ 
         return(
-            <div>
+            <div class = 'login_field'>
                 <TextField
                     id="user_id"
                     label="GitHub ID"
