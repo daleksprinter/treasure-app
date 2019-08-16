@@ -9,6 +9,7 @@ import(
 	
 	"./handler"
 	"./db"
+	"./middleware"
 )
 
 func index(w http.ResponseWriter, r *http.Request){
@@ -20,7 +21,7 @@ func handleRequests(){
  	myRouter.HandleFunc("/", index).Methods("GET")
 
 	//user api
-	myRouter.HandleFunc("/users", handler.GetUsers).Methods("GET")
+	myRouter.HandleFunc("/users", middleware.AuthenticateUser(handler.GetUsers)).Methods("GET")
 	myRouter.HandleFunc("/users", handler.PostUser).Methods("POST")
 
 	//ranking api
