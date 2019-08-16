@@ -10,7 +10,7 @@ CREATE TABLE vote
      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
      PRIMARY KEY(id), 
      FOREIGN KEY (user) REFERENCES user(id), 
-     FOREIGN KEY (candidate) REFERENCES candidate(id), 
+     FOREIGN KEY (candidate) REFERENCES user(id), 
      FOREIGN KEY (ranking) REFERENCES ranking(id) 
   ); 
 -- +migrate Down
