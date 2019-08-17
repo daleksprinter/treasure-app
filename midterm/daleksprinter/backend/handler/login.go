@@ -16,6 +16,9 @@ type TempUser struct{
 }
 
 func Login(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers: Origin", "X-Requested-With, Content-Type, Accept")
+
 	
 	var tuser TempUser
 	json.NewDecoder(r.Body).Decode(&tuser)
@@ -37,6 +40,5 @@ func Login(w http.ResponseWriter, r *http.Request){
 
 	session.Authenticate(w, r, user)
 	json.NewEncoder(w).Encode(user)
-
-
+	
 }

@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
+import Paper from '@material-ui/core/Paper';
 
 const Ranking = (props) => {
     return (
-        <div>
-            <div>{props.data.id}</div>
-            <div>{props.data.name}</div>
-            <div>{props.data.created_user}</div>
-        </div>
+        <Paper className = 'ranking'  >
+            <p>RankingID - {props.data.id}</p>
+            <p>RankingTitle - {props.data.name}</p>
+            <p>Created By - {props.data.created_user}</p>
+        </Paper>
     )
 }
 

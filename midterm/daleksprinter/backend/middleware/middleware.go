@@ -14,8 +14,7 @@ func AuthenticateUser(next http.HandlerFunc) http.HandlerFunc {
 		if !session.IsAuthenticated(r) {
 			fmt.Fprintf(w, "please login")
 			return 
-		}
-
+		}		
 		next.ServeHTTP(w, r)
 	}
 }
