@@ -2,6 +2,38 @@ import React, {Component} from 'react'
 
 import './rankings.css';
 
+class UserVeiw extends Component{
+    constructor(){
+        super();
+        this.state = {
+            user: {}
+        }
+    }
+
+    componentDidMount(){
+        const user_id = this.props.candidate;
+        const url = "http://localhost:8080/users/" + String(user_id)
+        fetch(url)
+        .then((res) => {
+            res.json().then((data) => {
+                this.setState({
+                    user: data
+                })
+            })
+        })
+    }
+
+    render(){
+        const github_icon_url = "https://github.com/" + this.state.user.user_id + ".png";
+        return(
+            <div>
+                <img src = {github_icon_url} className = 'github_thumbnail'/>
+                <div>{this.state.user.name}</div>
+            </div>
+        )
+    }
+}
+
 
 class RankingDetail extends Component{
 
@@ -10,8 +42,6 @@ class RankingDetail extends Component{
         this.state = {
             ranking:{},
             votes:[],
-            
-        
         }
     }
 
@@ -37,7 +67,6 @@ class RankingDetail extends Component{
                 })
             })
         })
-
     }
 
     render(){
@@ -47,8 +76,8 @@ class RankingDetail extends Component{
                 {this.state.votes.map((element) => {
                     return (
                         <div>
-                            <div>{element.candidate}</div>
-                            <div>{element.count}</div>
+                            <UserVeiw candidate = {element.candidate} />
+                            <div>数{element.count}</div>
                         </div>
                     )
                 })}

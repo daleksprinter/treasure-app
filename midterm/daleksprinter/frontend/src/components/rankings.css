@@ -17,3 +17,11 @@
 .create_ranking_textfield{
     margin:10px;
 }
+
+.github_thumbnail{
+    width: 130px;
+    height: 130px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
