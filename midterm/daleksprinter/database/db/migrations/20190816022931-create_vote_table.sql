@@ -13,4 +13,6 @@ CREATE TABLE votes
      FOREIGN KEY (candidate) REFERENCES users(id), 
      FOREIGN KEY (ranking) REFERENCES rankings(id) 
   ); 
+
+alter table votes add unique key unq1(user, ranking);
 -- +migrate Down
