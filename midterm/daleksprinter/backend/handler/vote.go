@@ -59,17 +59,17 @@ type Details struct{
 }
 
 type Res struct{
-	User int `db:"user" json:"user"`
+	Candidate int `db:"candidate" json:"candidate"`
 	Count int `db:"count" json:"count"`
 }
 
 func GetVotesByID(w http.ResponseWriter, r *http.Request){
 	DB := db.GetDB()
-	vars := mux.Vars(r) //パスパラメータ取得
+	vars := mux.Vars(r) 
 	id := vars["id"]
 	
 	var res []Res
-	sql := "select user, count(*) as count from votes where ranking = ? group by user"
+	sql := "select candidate, count(*) as count from votes where ranking = ? group by candidate order by count desc;"
 	DB.Raw(sql, id).Scan(&res)
 
 	json.NewEncoder(w).Encode(res)
