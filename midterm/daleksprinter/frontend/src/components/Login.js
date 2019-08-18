@@ -43,7 +43,6 @@ class Login extends Component{
         }).then((res) => {
             res.text().then((data) => {
                 window.location.href = '/'
-                console.log(data)
             })
         })
     }

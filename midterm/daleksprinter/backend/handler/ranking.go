@@ -12,6 +12,12 @@ import(
 	"../session"
 )
 
+type Ranking struct{
+	Name string `db:"name" json:"name"`
+	CreatedUser string `db:"created_user" json:"created_user"`
+	ThumbnailURL string `db:"thumbnail_url" json:"thumbnail_url"`
+}
+
 func GetRankings(w http.ResponseWriter, r *http.Request){
 	DB := db.GetDB()
 	rankings := []model.Ranking{}
