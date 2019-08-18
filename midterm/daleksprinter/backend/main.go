@@ -22,6 +22,7 @@ func handleRequests(){
 
 	//user api
 	myRouter.HandleFunc("/users", middleware.AuthenticateUser(handler.GetUsers)).Methods("GET")
+	myRouter.HandleFunc("/users/{id}", middleware.AuthenticateUser(handler.GetUserByID)).Methods("GET")
 
 
 	//ranking api

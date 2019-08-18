@@ -7,7 +7,7 @@ const Ranking = (props) => {
         <Paper className = 'ranking'  >
             <img src = {props.data.thumbnail_url} className ="ranking_thumbnail"></img>
             <p>RankingTitle - {props.data.name}</p>
-            <p>Created By - {props.data.created_user}</p>
+            <p>Created By - </p>
         </Paper>
     )
 }
@@ -23,15 +23,15 @@ class Rankings extends Component{
     }
 
     componentDidMount(){
-        const url = "http://localhost:8080/rankings";
-        fetch(url)
+        const rankings_url = "http://localhost:8080/rankings";
+        fetch(rankings_url)
         .then((res) => {
             res.text().then((data) => {
                 this.setState({
                     rankings: JSON.parse(data)
                 })
             })
-        })
+        });
     }
 
     render(){
@@ -41,6 +41,7 @@ class Rankings extends Component{
                     return <Ranking data = {data} />
                 })}
             </div>
+            
         )
     }
 
