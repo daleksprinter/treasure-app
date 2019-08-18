@@ -52,3 +52,13 @@ func DeleteVote(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "delete vote succeeded")
 
 }
+
+func GetVotesByID(w http.ResponseWriter, r *http.Request){
+	DB := db.GetDB()
+	vars := mux.Vars(r) //パスパラメータ取得
+	id := vars["id"]
+	var votes []model.Vote
+	DB.Where("ranking = ?", id).Find(&votes)
+	json.NewEncoder(w).Encode(votes)
+
+}

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Paper from '@material-ui/core/Paper';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
 import './rankings.css';
 
 
@@ -26,12 +28,17 @@ class Ranking extends Component{
     }
 
     render(){
+        const link = "/rankings/" + String(this.props.data.id)
         return(
-            <Paper className = "ranking">
-                <div>RankingTitle : {this.props.data.name}</div>
-                <div>Created_by : {this.state.user.name}</div>
-                <img src = {this.props.data.thumbnail_url} className = "ranking_thumbnail"/>
-            </Paper>
+            <div  className = "ranking">
+            <Link to = {link}>
+                <Paper className = "ranking_view">
+                    <img src = {this.props.data.thumbnail_url} className = "ranking_thumbnail"/>
+                    <h3>Ranking : {this.props.data.name}</h3>
+                    <div>Created_by : {this.state.user.name}</div>
+                </Paper>
+            </Link>
+            </div>
         )
     }
 }

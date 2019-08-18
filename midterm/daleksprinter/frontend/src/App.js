@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import RankingDetail from "./components/RankingDetail"
+
 import './App.css'
 const Header = () => (
   <div>
@@ -33,7 +35,8 @@ const App = () => (
       <div>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
-        <Route path='/rankings' component = {Rankings} />
+        <Route exact path='/rankings' component = {Rankings} />
+        <Route path='/rankings/:id' component = {RankingDetail} />
       </div>
     </BrowserRouter>
   </div>

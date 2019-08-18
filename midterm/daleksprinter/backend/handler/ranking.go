@@ -59,3 +59,13 @@ func DeleteRanking(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "delete ranking succeeded")
 
 }
+
+func GetRankingByID(w http.ResponseWriter, r *http.Request){
+	DB := db.GetDB()
+	vars := mux.Vars(r) //パスパラメータ取得
+	id := vars["id"]
+	var ranking model.Ranking
+	DB.Where("id = ?", id).First(&ranking)
+	json.NewEncoder(w).Encode(ranking)
+
+}

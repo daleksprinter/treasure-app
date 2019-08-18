@@ -5,9 +5,11 @@
     background-size: cover;
     border-radius: 50%;
 }
+.ranking_view{
+    padding:20px;
+}
 .ranking{
     text-align:center;
     width:30%;
-    padding:10px;
     margin:20px;
 }
