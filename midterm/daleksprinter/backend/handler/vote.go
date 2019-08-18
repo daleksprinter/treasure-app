@@ -53,12 +53,25 @@ func DeleteVote(w http.ResponseWriter, r *http.Request){
 
 }
 
+type Details struct{
+	UserID int `db:"user" json:"user"`
+	Count int `db:"count" json:"count"`
+}
+
+type Res struct{
+	User int `db:"user" json:"user"`
+	Count int `db:"count" json:"count"`
+}
+
 func GetVotesByID(w http.ResponseWriter, r *http.Request){
 	DB := db.GetDB()
 	vars := mux.Vars(r) //パスパラメータ取得
 	id := vars["id"]
-	var votes []model.Vote
-	DB.Where("ranking = ?", id).Find(&votes)
-	json.NewEncoder(w).Encode(votes)
+	
+	var res []Res
+	sql := "select user, count(*) as count from votes where ranking = ? group by user"
+	DB.Raw(sql, id).Scan(&res)
+
+	json.NewEncoder(w).Encode(res)
 
 }

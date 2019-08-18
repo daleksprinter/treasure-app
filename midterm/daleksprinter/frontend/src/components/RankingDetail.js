@@ -17,6 +17,7 @@ class RankingDetail extends Component{
 
     componentDidMount(){
         const {params} = this.props.match
+
         const ranking_url = "http://localhost:8080/rankings/" + params.id
         fetch(ranking_url)
         .then((res) => {
@@ -40,6 +41,7 @@ class RankingDetail extends Component{
     }
 
     render(){
+        
         return(
            <div>this is detail page</div>
         )

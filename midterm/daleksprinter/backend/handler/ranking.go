@@ -60,6 +60,7 @@ func DeleteRanking(w http.ResponseWriter, r *http.Request){
 
 }
 
+
 func GetRankingByID(w http.ResponseWriter, r *http.Request){
 	DB := db.GetDB()
 	vars := mux.Vars(r) //パスパラメータ取得
