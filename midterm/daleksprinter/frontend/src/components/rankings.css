@@ -68,9 +68,13 @@
     width:30%;
     text-align: center;
     padding: 0 0 20px 0;
-    margin:20px;
+    margin:20px auto;
 }
 
 .create_ranking_button{
     margin:20px;
+}
+
+.voteform{
+    margin:20px 0 0 0;
 }

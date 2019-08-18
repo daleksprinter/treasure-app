@@ -40,6 +40,7 @@ func handleRequests(){
 	//authentication api
 	myRouter.HandleFunc("/login", handler.Login).Methods("POST")
 	myRouter.HandleFunc("/logout", handler.Logout).Methods("GET")
+	myRouter.HandleFunc("/isloggedin", handler.IsUserLoggedin).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 }

@@ -43,7 +43,7 @@ class Login extends Component{
             body: JSON.stringify(data),
         }).then((res) => {
             res.text().then((data) => {
-                window.location.href = '/'
+                window.location.href = '/rankings'
             })
         })
     }

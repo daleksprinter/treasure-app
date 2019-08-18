@@ -42,3 +42,15 @@ func Login(w http.ResponseWriter, r *http.Request){
 	json.NewEncoder(w).Encode(user)
 	
 }
+type isLoggedin struct{
+	Isloggedin bool `json:"isloggedin"`
+}
+func IsUserLoggedin(w http.ResponseWriter, r *http.Request){
+	var auth isLoggedin
+	if session.IsAuthenticated(r) {
+		auth.Isloggedin = true
+	}else{
+		auth.Isloggedin = false
+	}
+	json.NewEncoder(w).Encode(auth)
+}

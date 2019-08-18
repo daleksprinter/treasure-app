@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{Component} from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Rankings from './components/Rankings'
@@ -12,22 +12,62 @@ import RankingDetail from "./components/RankingDetail"
 import './App.css'
 
 
-const Header = () => (
-  <div>
-    <AppBar position="static">
+class Header extends Component{
+    constructor(){
+      super();
+      this.state = {
+        isloggedin:false
+      }
+    }
+
+    componentDidMount(){
+      const url = "http://localhost:8080/isloggedin";
+      fetch(url)
+      .then((res) => {
+        res.json().then((data) => {
+          this.setState({
+            isloggedin: data.isloggedin
+          })
+          console.log(this.state.isloggedin)
+        })
+      })
+    }
+
+    render(){
+      const op = this.state.isloggedin ? "logout" : "login"
+      return(
+        <AppBar position="static">
         <Toolbar >
           <Typography variant="h6">
             <Link href = "/rankings" color="inherit">TreasureRanking</Link>
           </Typography>
           <div className ='login_link'>
             <Typography variant="h6" >
-              <Link href = "/login" color="inherit" >Login</Link>
+              <Link href = {"/" + op} color="inherit" >{op}</Link>
             </Typography>
           </div>
         </Toolbar>
       </AppBar>
-  </div>
-)
+      )
+    }
+
+
+}
+
+class Logout extends Component{
+  constructor(){
+    super();
+  }
+
+  componentDidMount(){
+    const logout = "http://localhost:8080/logout"
+    fetch(logout).then(window.location.href = "/login")
+  }
+
+  render(){
+    return(<div></div>)
+  }
+}
 
 const App = () => (
   <div>
@@ -36,6 +76,7 @@ const App = () => (
       <div>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
+        <Route path="/logout" component = {Logout} />
         <Route exact path='/rankings' component = {Rankings} />
         <Route path='/rankings/:id' component = {RankingDetail} />
       </div>

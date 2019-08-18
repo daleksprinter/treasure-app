@@ -56,7 +56,7 @@ class Vote extends React.Component {
       const { selected, hasError } = this.state;
 
       return (
-        <form autoComplete="off">
+        <form autoComplete="off" className = "voteform">
           <FormControl  error={hasError}>
             <InputLabel htmlFor="name">User</InputLabel>
             <Select
