@@ -20,6 +20,10 @@
     margin:20px;
     float:left;
 }
+
+.login_link{
+    margin-left: auto;
+}
 .textfield{
     text-align: right;
 }

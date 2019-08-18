@@ -48,7 +48,7 @@ class Vote extends React.Component {
             headers: headers,
             body: JSON.stringify(data),
         }).then((res) => {
-            console.log("vote succeeded");
+            window.location.reload();
         })
     }
   

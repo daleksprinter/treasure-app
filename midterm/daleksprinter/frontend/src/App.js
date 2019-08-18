@@ -19,9 +19,11 @@ const Header = () => (
           <Typography variant="h6">
             <Link href = "/rankings" color="inherit">TreasureRanking</Link>
           </Typography>
-          <Typography variant="h6" >
-            <Link href = "/login" color="inherit" >Login</Link>
-          </Typography>
+          <div className ='login_link'>
+            <Typography variant="h6" >
+              <Link href = "/login" color="inherit" >Login</Link>
+            </Typography>
+          </div>
         </Toolbar>
       </AppBar>
   </div>

@@ -36,7 +36,7 @@ class UserVeiw extends Component{
                 <img src = {crowns[this.props.rank - 1]} className = 'rank_crown'/>
                 <img src = {github_icon_url} className = 'github_thumbnail'/>
                 <div className = 'rank_det'>
-                    <p>{this.state.user.name}</p>
+                    <div>{this.state.user.name}</div>
                     <p>{this.props.num} Voted</p>
                 </div>
             </div>
