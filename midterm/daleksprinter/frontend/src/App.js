@@ -12,17 +12,16 @@ import MenuIcon from '@material-ui/icons/Menu';
 import RankingDetail from "./components/RankingDetail"
 
 import './App.css'
+
+
 const Header = () => (
   <div>
     <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6">
-            MyApp
+            Treasure Ranking
           </Typography>
-          <Button color="inherit"　align = 'right'>Login</Button>
+          <Button color="inherit" >Login</Button>
         </Toolbar>
       </AppBar>
   </div>

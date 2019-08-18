@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Vote from "./Vote"
+
 
 import './rankings.css';
 
@@ -77,11 +79,11 @@ class RankingDetail extends Component{
                     return (
                         <div>
                             <UserVeiw candidate = {element.candidate} />
-                            <div>数{element.count}</div>
+                            <div>数 - {element.count}</div>
                         </div>
                     )
                 })}
-
+                <Vote />
             </div>
         )
     }
