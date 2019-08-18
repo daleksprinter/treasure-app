@@ -1,0 +1,13 @@
+.ranking_thumbnail{
+    width: 130px;
+    height: 130px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
+.ranking{
+    text-align:center;
+    width:30%;
+    padding:10px;
+    margin:20px;
+}

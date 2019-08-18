@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import Paper from '@material-ui/core/Paper';
+import './rankings.css';
 
 const Ranking = (props) => {
     return (
         <Paper className = 'ranking'  >
-            <p>RankingID - {props.data.id}</p>
+            <img src = {props.data.thumbnail_url} className ="ranking_thumbnail"></img>
             <p>RankingTitle - {props.data.name}</p>
             <p>Created By - {props.data.created_user}</p>
         </Paper>
