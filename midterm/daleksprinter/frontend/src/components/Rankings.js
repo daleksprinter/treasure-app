@@ -60,18 +60,22 @@ class Rankings extends Component{
     render(){
         return(
             <div>
-                <div  className = "create_ranking_textfield">
-                    <TextField 
-                        placeholder = "Ranking Title"
-                        onChange = {this.changeTitle}
-                    />
-                    <Button variant="contained" color="primary" onClick = {this.createRanking}>
-                        Create
-                    </Button>
+                <div className = 'textfield'>
+                    <div className = "create_ranking_textfield">
+                        <TextField 
+                            placeholder = "Ranking Title"
+                            onChange = {this.changeTitle}
+                        />
+                        <Button variant="contained" color="primary" onClick = {this.createRanking} className = "create_ranking_button">
+                            Create
+                        </Button>
+                    </div>
                 </div>
-                {this.state.rankings.map(data => {
-                    return <Ranking data = {data} />
-                })}
+                <div className = "ranking_list">
+                    {this.state.rankings.map(data => {
+                        return <Ranking data = {data} />
+                    })}
+                </div>
             </div>
         )
     }

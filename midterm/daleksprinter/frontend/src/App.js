@@ -15,12 +15,12 @@ import './App.css'
 const Header = () => (
   <div>
     <AppBar position="static">
-        <Toolbar>
+        <Toolbar >
           <Typography variant="h6">
             <Link href = "/rankings" color="inherit">TreasureRanking</Link>
           </Typography>
-          <Typography variant="h6">
-            <Link href = "/login" color="inherit">Login</Link>
+          <Typography variant="h6" >
+            <Link href = "/login" color="inherit" >Login</Link>
           </Typography>
         </Toolbar>
       </AppBar>

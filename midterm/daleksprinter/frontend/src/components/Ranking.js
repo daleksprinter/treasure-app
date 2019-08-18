@@ -31,13 +31,13 @@ class Ranking extends Component{
         const link = "/rankings/" + String(this.props.data.id)
         return(
             <div  className = "ranking">
-            <Link to = {link}>
-                <Paper className = "ranking_view">
-                    <img src = {this.props.data.thumbnail_url} className = "ranking_thumbnail"/>
-                    <h3>Ranking : {this.props.data.name}</h3>
-                    <div>Created_by : {this.state.user.name}</div>
-                </Paper>
-            </Link>
+                <Link to = {link}>
+                    <Paper className = "ranking_view">
+                        <img src = {this.props.data.thumbnail_url} className = "ranking_thumbnail"/>
+                        <h3>Ranking : {this.props.data.name}</h3>
+                        <div>Created_by : {this.state.user.name}</div>
+                    </Paper>
+                </Link>
             </div>
         )
     }

@@ -28,11 +28,17 @@ class UserVeiw extends Component{
 
     render(){
         const github_icon_url = "https://github.com/" + this.state.user.user_id + ".png";
+        const crowns = ["https://treasure-ranking.s3.us-east-2.amazonaws.com/treasure-ranking/istockphoto-637958090-1024x1024.jpg",
+                        "https://treasure-ranking.s3.us-east-2.amazonaws.com/treasure-ranking/istockphoto-637958090-1024x1024+(1).jpg",
+                        "https://treasure-ranking.s3.us-east-2.amazonaws.com/treasure-ranking/istockphoto-637958090-1024x1024+(2).jpg"]
         return(
             <div>
+                <img src = {crowns[this.props.rank - 1]} className = 'rank_crown'/>
                 <img src = {github_icon_url} className = 'github_thumbnail'/>
-                <div>{this.state.user.name}</div>
-                <div>{this.props.num}</div>
+                <div className = 'rank_det'>
+                    <p>{this.state.user.name}</p>
+                    <p>{this.props.num} Voted</p>
+                </div>
             </div>
         )
     }
@@ -41,8 +47,8 @@ class UserVeiw extends Component{
 const RankingView = (props) => {
     return (
         <div>
-            <div>{props.ranking.name}</div>
-            <img src = {props.ranking.thumbnail_url} />
+            <img src = {props.ranking.thumbnail_url} class = "ranking_detail_thumbnail"/>
+            <h3>{props.ranking.name}</h3>
         </div>
     )
 }
@@ -83,13 +89,14 @@ class RankingDetail extends Component{
     }
 
     render(){
-
+        let count = 0
         return(
             <Paper className = "ranking_detail">
                 <RankingView ranking = {this.state.ranking}/>
                 {this.state.votes.map((element) => {
+                    count += 1;
                     return (  
-                        <UserVeiw candidate = {element.candidate} num = {element.count}/>
+                        <UserVeiw candidate = {element.candidate} num = {element.count} rank = {count}/>
                     )
                 })}
                 <Vote ranking = {this.state.ranking}/>

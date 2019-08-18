@@ -65,7 +65,7 @@ func GetVotesByID(w http.ResponseWriter, r *http.Request){
 	id := vars["id"]
 	
 	var res []Res
-	sql := "select candidate, count(*) as count from votes where ranking = ? group by candidate order by count desc;"
+	sql := "select candidate, count(*) as count from votes where ranking = ? group by candidate order by count desc limit 3;"
 	DB.Raw(sql, id).Scan(&res)
 
 	json.NewEncoder(w).Encode(res)
