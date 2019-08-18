@@ -35,7 +35,6 @@ class Rankings extends Component{
     }
 
     createRanking = () => {
-        console.log(this.state.title)
         const url = "http://localhost:8080/rankings"
         const method = "POST"
         const data = {

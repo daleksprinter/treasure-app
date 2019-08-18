@@ -83,7 +83,7 @@ class RankingDetail extends Component{
                         </div>
                     )
                 })}
-                <Vote />
+                <Vote ranking = {this.state.ranking}/>
             </div>
         )
     }

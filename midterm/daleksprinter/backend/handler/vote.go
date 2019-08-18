@@ -25,8 +25,7 @@ func PostVote(w http.ResponseWriter, r *http.Request){
 	json.NewDecoder(r.Body).Decode(&vote)
 
 	//authorize user
-	vote.User = 1
-
+	vote.User = session.GetRequestedUser(r)
 	DB.Create(&vote)
 	json.NewEncoder(w).Encode(&vote)
 }

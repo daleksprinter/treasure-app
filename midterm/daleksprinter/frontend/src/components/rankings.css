@@ -29,3 +29,11 @@
 .select{
     width:200px;
 }
+
+.select_thumbnail{
+    width: 30px;
+    height: 30px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
