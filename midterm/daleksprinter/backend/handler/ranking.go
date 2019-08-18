@@ -30,8 +30,9 @@ func PostRanking(w http.ResponseWriter, r *http.Request){
 	var ranking model.Ranking
 	json.NewDecoder(r.Body).Decode(&ranking)
 
-	//authorize user
-	ranking.CreatedUser = 1
+	//authorize user（あとでかえる）
+	ranking.CreatedUser = session.GetRequestedUser(r)
+	ranking.ThumbnailURL = "https://treasure-ranking.s3.us-east-2.amazonaws.com/treasure-ranking/20180903170600.jpg"
 
 	DB.Create(&ranking)
 	json.NewEncoder(w).Encode(&ranking)

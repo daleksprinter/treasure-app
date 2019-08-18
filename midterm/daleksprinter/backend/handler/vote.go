@@ -53,17 +53,14 @@ func DeleteVote(w http.ResponseWriter, r *http.Request){
 
 }
 
-type Details struct{
-	UserID int `db:"user" json:"user"`
-	Count int `db:"count" json:"count"`
-}
-
-type Res struct{
-	Candidate int `db:"candidate" json:"candidate"`
-	Count int `db:"count" json:"count"`
-}
 
 func GetVotesByID(w http.ResponseWriter, r *http.Request){
+
+	type Res struct{
+		Candidate int `db:"candidate" json:"candidate"`
+		Count int `db:"count" json:"count"`
+	}
+
 	DB := db.GetDB()
 	vars := mux.Vars(r) 
 	id := vars["id"]

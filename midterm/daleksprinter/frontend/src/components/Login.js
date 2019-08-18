@@ -33,12 +33,13 @@ class Login extends Component{
             "user_id":this.state.username,
             "password":this.state.password
         }
+        const headers = {
+            "Content-Type": "application/json; charset=utf-8",
+        }
         const method = "POST"
         fetch(url, {
             method:method,
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-            },
+            headers: headers,
             body: JSON.stringify(data),
         }).then((res) => {
             res.text().then((data) => {

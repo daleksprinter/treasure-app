@@ -2,14 +2,18 @@ import React, {Component} from 'react'
 import './rankings.css';
 import Ranking from './Ranking'
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class Rankings extends Component{
 
     constructor(){
         super();
         this.state = {
-            rankings: []
+            rankings: [],
+            title:""
         }
+        this.changeTitle = this.changeTitle.bind(this)
     }
 
     componentDidMount(){
@@ -24,9 +28,47 @@ class Rankings extends Component{
         });
     }
 
+    changeTitle(e){
+        this.setState({
+            title : e.target.value
+        })
+    }
+
+    createRanking = () => {
+        console.log(this.state.title)
+        const url = "http://localhost:8080/rankings"
+        const method = "POST"
+        const data = {
+            "name":this.state.title,
+        }
+        const headers = {
+            "Content-Type": "application/json; charset=utf-8",
+        }
+        fetch(url, {
+            method:method,
+            headers: headers,
+            body: JSON.stringify(data),
+        }).then((res) => {
+            res.json().then((d) => {
+                this.setState({
+                    rankings: this.state.rankings.concat(d)
+                })
+            })
+        })  
+    }
+
     render(){
         return(
             <div>
+                <div  className = "create_ranking_textfield">
+                    <TextField 
+                        placeholder = "Ranking Title"
+                        onChange = {this.changeTitle}
+                    />
+                    <Button variant="contained" color="primary" onClick = {this.createRanking}>
+                        Create
+                    </Button>
+                </div>
                 {this.state.rankings.map(data => {
                     return <Ranking data = {data} />
                 })}

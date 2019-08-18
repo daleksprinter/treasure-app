@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import Paper from '@material-ui/core/Paper';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import './rankings.css';
 
@@ -11,7 +9,9 @@ class RankingDetail extends Component{
         super();
         this.state = {
             ranking:{},
-            votes:{}
+            votes:[],
+            
+        
         }
     }
 
@@ -41,9 +41,19 @@ class RankingDetail extends Component{
     }
 
     render(){
-        
+
         return(
-           <div>this is detail page</div>
+            <div>
+                {this.state.votes.map((element) => {
+                    return (
+                        <div>
+                            <div>{element.candidate}</div>
+                            <div>{element.count}</div>
+                        </div>
+                    )
+                })}
+
+            </div>
         )
     }
 }
