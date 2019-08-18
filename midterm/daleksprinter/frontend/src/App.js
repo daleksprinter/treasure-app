@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Rankings from './components/Rankings'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import Link from '@material-ui/core/Link';
 
 import RankingDetail from "./components/RankingDetail"
 
@@ -19,9 +17,11 @@ const Header = () => (
     <AppBar position="static">
         <Toolbar>
           <Typography variant="h6">
-            Treasure Ranking
+            <Link href = "/rankings" color="inherit">TreasureRanking</Link>
           </Typography>
-          <Button color="inherit" >Login</Button>
+          <Typography variant="h6">
+            <Link href = "/login" color="inherit">Login</Link>
+          </Typography>
         </Toolbar>
       </AppBar>
   </div>

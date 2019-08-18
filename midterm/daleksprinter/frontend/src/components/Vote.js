@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+import React from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import lifecycle from 'react-pure-lifecycle';
-import { Menu } from '@material-ui/core';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
@@ -57,7 +53,6 @@ class Vote extends React.Component {
     }
   
     render() {
-      const { classes } = this.props;
       const { selected, hasError } = this.state;
 
       return (

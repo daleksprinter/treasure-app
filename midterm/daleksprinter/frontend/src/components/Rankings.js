@@ -50,7 +50,8 @@ class Rankings extends Component{
         }).then((res) => {
             res.json().then((d) => {
                 this.setState({
-                    rankings: this.state.rankings.concat(d)
+                    rankings: this.state.rankings.concat(d),
+                    title:""
                 })
             })
         })  

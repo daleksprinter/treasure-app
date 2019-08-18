@@ -3,6 +3,7 @@ import Vote from "./Vote"
 
 
 import './rankings.css';
+import { Paper } from '@material-ui/core';
 
 class UserVeiw extends Component{
     constructor(){
@@ -31,9 +32,19 @@ class UserVeiw extends Component{
             <div>
                 <img src = {github_icon_url} className = 'github_thumbnail'/>
                 <div>{this.state.user.name}</div>
+                <div>{this.props.num}</div>
             </div>
         )
     }
+}
+
+const RankingView = (props) => {
+    return (
+        <div>
+            <div>{props.ranking.name}</div>
+            <img src = {props.ranking.thumbnail_url} />
+        </div>
+    )
 }
 
 
@@ -74,17 +85,15 @@ class RankingDetail extends Component{
     render(){
 
         return(
-            <div>
+            <Paper className = "ranking_detail">
+                <RankingView ranking = {this.state.ranking}/>
                 {this.state.votes.map((element) => {
-                    return (
-                        <div>
-                            <UserVeiw candidate = {element.candidate} />
-                            <div>数 - {element.count}</div>
-                        </div>
+                    return (  
+                        <UserVeiw candidate = {element.candidate} num = {element.count}/>
                     )
                 })}
                 <Vote ranking = {this.state.ranking}/>
-            </div>
+            </Paper>
         )
     }
 }

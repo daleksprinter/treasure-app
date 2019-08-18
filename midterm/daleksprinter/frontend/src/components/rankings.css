@@ -37,3 +37,9 @@
     background-size: cover;
     border-radius: 50%;
 }
+
+.ranking_detail{
+    width:30%;
+    padding:30px;
+    text-align: center;
+}
