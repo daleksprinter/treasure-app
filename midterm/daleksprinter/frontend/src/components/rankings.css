@@ -1,0 +1,80 @@
+.ranking_thumbnail{
+    width: 130px;
+    height: 130px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
+.ranking_view{
+    padding:20px;
+}
+.ranking_detail_thumbnail{   
+    width: 100%;
+}
+
+
+
+.ranking{
+    text-align:center;
+    width:30%;
+    margin:20px;
+    float:left;
+}
+
+.login_link{
+    margin-left: auto;
+}
+.textfield{
+    text-align: right;
+}
+.create_ranking_textfield{
+
+    margin:10px;
+}
+
+.github_thumbnail{
+    width: 70px;
+    height: 70px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
+.rank_det{
+    display: inline-block;
+}
+
+.select{
+    width:200px;
+}
+
+.rank_crown{
+    width: 80px;
+    height: 80px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+
+.select_thumbnail{
+    width: 30px;
+    height: 30px;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.ranking_detail{
+    width:30%;
+    text-align: center;
+    padding: 0 0 20px 0;
+    margin:20px auto;
+}
+
+.create_ranking_button{
+    margin:20px;
+}
+
+.voteform{
+    margin:20px 0 0 0;
+}

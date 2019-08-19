@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mysql:
+    container_name: midterm_mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./db/mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  app:
+    image: dkkoma/sql-migrate-bin:latest
+    volumes:
+      - ./db:/app
+    working_dir: /app
+    links:
+      - mysql
+      - mysql:database

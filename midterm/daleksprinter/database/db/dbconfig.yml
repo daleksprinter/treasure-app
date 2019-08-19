@@ -1,0 +1,5 @@
+development:
+  dialect: mysql
+  datasource: root:password@(database:3306)/midterm?parseTime=true
+  dir: migrations
+
