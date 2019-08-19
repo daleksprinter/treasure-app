@@ -11,7 +11,8 @@ class Rankings extends Component{
         super();
         this.state = {
             rankings: [],
-            title:""
+            title:"",
+            isloggedin:false
         }
         this.changeTitle = this.changeTitle.bind(this)
     }
@@ -56,6 +57,8 @@ class Rankings extends Component{
             })
         })  
     }
+
+    
 
     render(){
         return(
